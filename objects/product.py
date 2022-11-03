@@ -17,13 +17,13 @@ class Product(MyObject):
     def del_detail(self, id_: int):
         del self._details[id_]
 
-    def get_detail(self, id_: int):
+    def get_detail(self, id_: int) -> Detail:
         return self._details[id_]['detail']
 
-    def get_count(self, id_: int):
+    def get_count(self, id_: int) -> int:
         return self._details[id_]['count']
 
-    def get_operation(self, id_: int):
+    def get_operation(self, id_: int) -> Operation:
         return self._details[id_]['operation']
 
     def print_details(self):
