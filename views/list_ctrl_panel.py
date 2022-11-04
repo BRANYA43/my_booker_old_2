@@ -24,6 +24,10 @@ class ListCtrlPanel(wx.Panel):
         for label in labels:
             self.btns[label].Enable(False)
 
+    def bind_button(self, func, label):
+        button = self.btns[label]
+        self.Bind(wx.EVT_BUTTON, func, button)
+
     def add_column(self, *headers):
         for col, header in enumerate(headers):
             self.list_ctrl.InsertColumn(col, lang.NAMES[header])
