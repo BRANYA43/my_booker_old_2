@@ -5,7 +5,7 @@ import lang.en as lang
 
 
 class ListCtrlPanel(wx.Panel):
-    def __init__(self, parent, size_list=(200, 300)):
+    def __init__(self, parent, size_list=cfg.SIZE_LIST):
         super().__init__(parent=parent)
         self.btns: dict[str: wx.Button] = {}
         self.columns: dict[str: int] = {}
