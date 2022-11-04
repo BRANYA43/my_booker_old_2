@@ -16,13 +16,13 @@ class ListCtrlPanel(wx.Panel):
         for label in labels:
             self.btns.setdefault(label, wx.Button(self, label=lang.NAMES[label]))
 
-    def enable_button(self, *btns):
-        for btn in btns:
-            self.btns[btn].Enable(True)
+    def enable_button(self, *labels):
+        for label in labels:
+            self.btns[label].Enable(True)
 
-    def disable_button(self, *btns):
-        for btn in btns:
-            self.btns[btn].Enable(False)
+    def disable_button(self, *labels):
+        for label in labels:
+            self.btns[label].Enable(False)
 
     def add_column(self, *headers):
         for col, header in enumerate(headers):
