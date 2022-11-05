@@ -55,10 +55,15 @@ class Constructor(wx.Frame, wx.Panel, wx.Dialog):
         raise NotImplemented
 
     def __add_new_dict(self, dict_widgets: str):
-        if self.__is_this_dict_in_widgets(dict_widgets):
+        if not self.__is_this_dict_in_widgets(dict_widgets):
             self.widgets.setdefault(dict_widgets, {})
 
     def __is_this_dict_in_widgets(self, dict_widgets: str) -> bool:
         if self.widgets.get(dict_widgets) is not None:
             return True
         return False
+
+    @staticmethod
+    def reiterate_func(func, *args):
+        for arg in args:
+            func(arg)
