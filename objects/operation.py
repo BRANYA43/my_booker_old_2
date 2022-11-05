@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from my_object import MyObject
+from objects.my_object import MyObject
 
 
 class Operation(MyObject):

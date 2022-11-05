@@ -1,4 +1,4 @@
-from id_ import ID
+from objects.id_ import ID
 
 
 class MyObject:

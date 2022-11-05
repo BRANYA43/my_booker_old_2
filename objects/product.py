@@ -1,8 +1,8 @@
 from pprint import pp
 
-from my_object import MyObject
-from detail import Detail
-from operation import Operation
+from objects.my_object import MyObject
+from objects.detail import Detail
+from objects.operation import Operation
 
 
 class Product(MyObject):

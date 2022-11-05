@@ -1,4 +1,4 @@
-from my_object import MyObject
+from objects.my_object import MyObject
 
 
 class Detail(MyObject):
