@@ -2,6 +2,7 @@ import wx
 
 import config.config as cfg
 import lang.en as lang
+from funcs_support import reiterate_func
 
 
 class Constructor(wx.Frame, wx.Panel, wx.Dialog):
@@ -20,19 +21,22 @@ class Constructor(wx.Frame, wx.Panel, wx.Dialog):
         self.widgets = {}
 
     # btn funcs
+    @reiterate_func
     def add_btn(self, name: str):
         self.__add_new_dict('btns')
         key = name
         name = lang.NAMES[name]
         self.widgets['btns'].setdefault(key, wx.Button(self, label=name))
 
-    def bind_btn(self, func, name: str):
+    def bind_btn(self,  name: str, func):
         button = self.widgets['btns'][name]
         self.Bind(wx.EVT_BUTTON, func, button)
 
+    @reiterate_func
     def enable_btn(self, name: str):
         self.widgets['btns'][name].Enable(True)
 
+    @reiterate_func
     def disable_btn(self, name: str):
         self.widgets['btns'][name].Enable(False)
 
@@ -41,12 +45,14 @@ class Constructor(wx.Frame, wx.Panel, wx.Dialog):
         self.__add_new_dict('comboboxes')
         self.widgets['comboboxes'].setdefault(name, wx.ComboBox(self, value=choices[0], choices=choices, style=wx.CB_READONLY))
 
+    @reiterate_func
     def add_static_text(self, label: str):
         self.__add_new_dict('static_texts')
         key = label
         label = lang.NAMES[label] + ':'
         self.widgets['static_texts'].setdefault(key, wx.StaticText(self, label=label))
 
+    @reiterate_func
     def add_entry_field(self, name: str):
         self.__add_new_dict('entry_fields')
         self.widgets['entry_fields'].setdefault(name, wx.TextCtrl(self))
@@ -62,8 +68,3 @@ class Constructor(wx.Frame, wx.Panel, wx.Dialog):
         if self.widgets.get(dict_widgets) is not None:
             return True
         return False
-
-    @staticmethod
-    def reiterate_func(func, *args):
-        for arg in args:
-            func(arg)
