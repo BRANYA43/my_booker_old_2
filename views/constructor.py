@@ -46,11 +46,11 @@ class Constructor(wx.Frame, wx.Panel, wx.Dialog):
         self.widgets['comboboxes'].setdefault(name, wx.ComboBox(self, value=choices[0], choices=choices, style=wx.CB_READONLY))
 
     @reiterate_func
-    def add_static_text(self, label: str):
+    def add_static_label(self, name: str):
         self.__add_new_dict('static_texts')
-        key = label
-        label = lang.NAMES[label] + ':'
-        self.widgets['static_texts'].setdefault(key, wx.StaticText(self, label=label))
+        key = name
+        name = lang.NAMES[name] + ':'
+        self.widgets['static_texts'].setdefault(key, wx.StaticText(self, label=name))
 
     @reiterate_func
     def add_entry_field(self, name: str):
