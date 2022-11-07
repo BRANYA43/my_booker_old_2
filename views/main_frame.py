@@ -1,12 +1,12 @@
 import wx
 
 import config.config as cfg
-from views.constructor import Constructor
+from constructors.frame_constructor import FrameConstructor
 
 
-class MainFrame(Constructor):
+class MainFrame(FrameConstructor):
     def __init__(self):
-        super().__init__(window=0, parent=None, title=cfg.TITLE, size=cfg.SIZE_FRAME)
+        super().__init__(parent=None)
         notebook = wx.Notebook(self)
         tab_test_0 = wx.Panel(notebook)
         tab_test_1 = wx.Panel(notebook)
