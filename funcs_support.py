@@ -1,6 +1,6 @@
-# Decorate
+# Decorate for use class
 def reiterate_func(func):
-    def wrapper(*args, **kwargs):
+    def wrapper(self, *args, **kwargs):
         for arg in args:
-            func(arg, **kwargs)
+            func(self, arg, **kwargs)
     return wrapper
