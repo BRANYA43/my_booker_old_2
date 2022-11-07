@@ -1,8 +1,5 @@
-import wx
-
 import config.config as cfg
-import lang.en as lang
-from objects.constructor import Constructor
+from views.constructor import Constructor
 
 
 class FormDialog(Constructor):
