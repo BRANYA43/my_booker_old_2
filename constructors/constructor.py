@@ -13,10 +13,10 @@ class Constructor:
         self.entry_fields = {}
 
     @reiterate_func
-    def add_btn(self, name: str):
+    def add_btn(self, name: str, width=180):
         key = name
         name = lang.NAMES[name]
-        self.btns.setdefault(key, wx.Button(self, label=name))
+        self.btns.setdefault(key, wx.Button(self, label=name, size=(width, -1)))
 
     def bind_btn(self,  name: str, func):
         button = self.btns[name]
