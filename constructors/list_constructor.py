@@ -19,12 +19,12 @@ class ListConstructor(PanelConstructor):
         self.columns.setdefault(header, col)
 
     @reiterate_func
-    def width_column(self, header: str, width: int):
+    def set_width_column(self, header: str, width: int):
         self.list_ctrl.SetColumnWidth(col=self.columns[header], width=width)
 
     @reiterate_func
     def hide_column(self, header: str):
-        self.width_column(header, width=0)
+        self.set_width_column(header, width=0)
 
     @reiterate_func
     def add_row(self, *items):
