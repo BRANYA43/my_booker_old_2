@@ -7,13 +7,13 @@ from funcs_support import reiterate_func
 
 
 class ListConstructor(PanelConstructor):
-    def __init__(self, parent, size_list=cfg.SIZE_LIST):
-        super().__init__(parent=parent)
+    def __init__(self, parent, size=wx.DefaultSize, style=wx.TAB_TRAVERSAL):
+        super().__init__(parent=parent, size=size, style=style)
         self.columns: dict[str: int] = {}
-        self.list_ctrl = wx.ListCtrl(self, size=size_list, style=wx.LC_REPORT)
+        self.list_ctrl = wx.ListCtrl(self, size=(-1, -1), style=wx.LC_REPORT)
 
     @reiterate_func
-    def add_column(self, header):
+    def add_column(self, header: str):
         col = self.list_ctrl.GetColumnCount()
         self.list_ctrl.InsertColumn(col, lang.NAMES[header])
         self.columns.setdefault(header, col)
