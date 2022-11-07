@@ -48,3 +48,7 @@ class Constructor:
 
     def build_view(self):
         raise NotImplemented
+
+
+if __name__ == '__main__':
+    ...
