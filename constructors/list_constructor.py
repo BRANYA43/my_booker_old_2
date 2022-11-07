@@ -2,12 +2,13 @@ import wx
 
 import config.config as cfg
 import lang.en as lang
-from views.constructor import Constructor, reiterate_func
+from constructors.constructor import Constructor
+from funcs_support import reiterate_func
 
 
-class ListCtrlPanel(Constructor):
+class ListConstructor(wx.Panel, Constructor):
     def __init__(self, parent, size_list=cfg.SIZE_LIST):
-        super().__init__(window=1, parent=parent)
+        wx.Panel.__init__(parent)
         self.columns: dict[str: int] = {}
         self.list_ctrl = wx.ListCtrl(self, size=size_list, style=wx.LC_REPORT)
         self.build_view()
