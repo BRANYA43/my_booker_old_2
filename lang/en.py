@@ -12,8 +12,10 @@ NAMES = {
     # E
     'edit': 'Edit',
     # F
+    'full_name': 'Full name',
     # G
     # H
+    'hourly_work': 'Hourly work',
     # I
     'info': 'Info',
     'id': 'ID',
@@ -34,8 +36,11 @@ NAMES = {
     'operation': 'Operation',
     # P
     'product': 'Product',
+    'piecework': 'Piecework',
+    'payment': 'Payment',
     # Q
     # R
+    'rate': 'Rate',
     # S
     'save': 'Save',
     'salary': 'Salary',
@@ -48,3 +53,5 @@ NAMES = {
     'yes': 'Yes',
     # Z
 }
+
+
