@@ -11,6 +11,12 @@ def reiterate_func(func):
     return wrapper
 
 
+def is_selected_object(func):
+    def wrapper(self, *args, **kwargs):
+        if self.model.selected_object is not None:
+            func(self, *args, **kwargs)
+
+
 def test_panel(panel):
     class TestFrame(wx.Frame):
         def __init__(self):
@@ -33,3 +39,17 @@ def test_frame(frame):
     test_frame.Center()
     test_frame.Show()
     app.Mainloop()
+
+
+def test_dialog(dialog):
+    app = wx.App()
+
+    class TestFrame(wx.Frame):
+        def __init__(self):
+            super(TestFrame, self).__init__(parent=None, title='TEST-FRAME', size=cfg.SIZE_FRAME)
+            self.dialog = dialog(self)
+            self.dialog.ShowModal()
+    test_frame = TestFrame()
+    test_frame.Center()
+    test_frame.Show()
+    app.MainLoop()
