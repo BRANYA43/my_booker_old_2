@@ -1,17 +1,22 @@
 import wx
 
-import config.config as cfg
-from constructors.frame_constructor import FrameConstructor
+import lang.en as lang
+from builders.notebook import BNotebook
+from views.laborer.list import VList
+from models.list import MList
+from controllers.list_laborer import CLaborerList
 
 
-class MainFrame(FrameConstructor):
+class MainFrame(BNotebook):
     def __init__(self):
-        super().__init__(parent=None)
-        notebook = wx.Notebook(self)
-        tab_test_0 = wx.Panel(notebook)
-        tab_test_1 = wx.Panel(notebook)
-        notebook.InsertPage(0, tab_test_0, 'Home')
-        notebook.InsertPage(1, tab_test_1, 'Setting')
+        super().__init__(parent=None, size=(800, 600))
+        self.build_tab_laborer()
+
+    def build_tab_laborer(self):
+        model = MList()
+        list_view = VList(self.notebook)
+        controller = CLaborerList(model, list_view)
+        self.add_page(lang.NAMES['laborers'], list_view)
 
     def show_frame(self):
         self.Center()
