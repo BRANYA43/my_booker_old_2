@@ -15,6 +15,7 @@ def is_selected_object(func):
     def wrapper(self, *args, **kwargs):
         if self.model.selected_object is not None:
             func(self, *args, **kwargs)
+    return wrapper
 
 
 def test_panel(panel):
