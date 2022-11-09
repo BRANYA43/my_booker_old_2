@@ -22,14 +22,6 @@ class Builder:
         button = self.btns[name]
         self.Bind(wx.EVT_BUTTON, func, button)
 
-    @reiterate_func
-    def enable_btn(self, name: str):
-        self.btns[name].Enable(True)
-
-    @reiterate_func
-    def disable_btn(self, name: str):
-        self.btns[name].Enable(False)
-
     def add_combobox(self, name: str, choices: list[str], *, width=200, style=wx.CB_READONLY):
         self.comboboxes.setdefault(name, wx.ComboBox(self, value=choices[0], size=(width, -1), choices=choices, style=style))
 
@@ -48,6 +40,9 @@ class Builder:
     def set_label_static_label(self, name: str, label: str):
         self.static_labels[name].SetLabel(label)
 
+    def get_label_static_label(self, name: str) -> str:
+        return self.static_labels[name].GetLabel()
+
     @reiterate_func
     def add_entry_field(self, name: str, *, value=wx.EmptyString, width=200, style=0):
         self.entry_fields.setdefault(name, wx.TextCtrl(self, value=value, size=(width, -1), style=style))
@@ -57,6 +52,14 @@ class Builder:
 
     def get_value_entry_field(self, name: str) -> str:
         return self.entry_fields[name].GetValue()
+
+    @reiterate_func
+    def enable_widget(self, name: str, widget: str):
+        self.__getattribute__(widget + 's')[name].Enable(True)
+
+    @reiterate_func
+    def disable_widget(self, name: str, widget: str):
+        self.__getattribute__(widget + 's')[name].Enable(False)
 
     def add_widgets(self):
         raise NotImplemented

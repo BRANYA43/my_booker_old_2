@@ -14,6 +14,7 @@ class CLaborerList:
         self.list_view = list_view
         self.info_view = VInfo(self.list_view)
         self.profile_view = VProfile(self.list_view)
+        self.list_view.disable_widget('info', 'edit', 'delete', widget='btn')
         self.add_binds()
 
     def add_binds(self):
@@ -23,7 +24,7 @@ class CLaborerList:
         self.list_view.bind_btn('delete', self.on_delete)
         self.profile_view.bind_btn('save', self.on_save)
         self.info_view.bind_btn('ok', self.on_ok)
-        self.list_view.Bind(wx.EVT_LIST_ITEM_FOCUSED, self.on_select)
+        self.list_view.Bind(wx.EVT_LIST_ITEM_SELECTED, self.on_select)
 
     def on_select(self, event):
         self.model.selected_row = self.list_view.list_ctrl.GetFocusedItem()
@@ -47,7 +48,7 @@ class CLaborerList:
             self.list_view.add_row(laborer.name, laborer.id)
         self.profile_view.Close()
 
-    # @is_selected_object
+    @is_selected_object
     def on_info(self, event):
         laborer = self.model.selected_object
         self.info_view.set_info(laborer.name, laborer.payment, str(laborer.rate))
@@ -56,8 +57,10 @@ class CLaborerList:
     def on_add(self, event):
         self.model.mode_edited = False
         self.profile_view.ShowModal()
+        if self.model.is_one_object_in_objects():
+            self.list_view.enable_widget('info', 'edit', 'delete', widget='btn')
 
-    # @is_selected_object
+    @is_selected_object
     def on_edit(self, event):
         self.model.mode_edited = True
         laborer = self.model.selected_object
@@ -66,11 +69,13 @@ class CLaborerList:
         self.profile_view.set_value_entry_field('rate', str(laborer.rate))
         self.profile_view.ShowModal()
 
-    # @is_selected_object
+    @is_selected_object
     def on_delete(self, event):
         self.model.del_object(self.model.selected_object_id)
         self.list_view.del_row(self.model.selected_row)
         self.model.set_value_selected_attrs_to_none()
+        if self.model.is_empty_objects():
+            self.list_view.disable_widget('info', 'edit', 'delete', widget='btn')
 
     def on_ok(self, event):
         self.info_view.Close()
