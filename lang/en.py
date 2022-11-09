@@ -26,6 +26,7 @@ NAMES = {
     # J
     # L
     'laborer': 'Laborer',
+    'laborers': 'Laborers',
     # K
     # M
     # N
@@ -38,6 +39,7 @@ NAMES = {
     'product': 'Product',
     'piecework': 'Piecework',
     'payment': 'Payment',
+    'pattern_name': 'James Johnson',
     # Q
     # R
     'rate': 'Rate',
