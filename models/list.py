@@ -24,7 +24,7 @@ class MList:
         return object_
 
     @staticmethod
-    def set_attrs_object(object_, **attrs_and_value):
+    def set_attrs_object(object_: MyObject, **attrs_and_value):
         for attr, value in attrs_and_value.items():
             object_.__setattr__(attr, value)
         return object_
