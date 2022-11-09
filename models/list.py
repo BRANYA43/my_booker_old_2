@@ -34,6 +34,16 @@ class MList:
         self.selected_object_id = None
         self.selected_object = None
 
+    def is_empty_objects(self) -> bool:
+        if len(self.objects) == 0:
+            return True
+        return False
+
+    def is_one_object_in_objects(self) -> bool:
+        if len(self.objects) == 1:
+            return True
+        return False
+
 
 if __name__ == '__main__':
     list_model = MList()
