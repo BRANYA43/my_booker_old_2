@@ -18,6 +18,7 @@ def is_selected_object(func):
     return wrapper
 
 
+# testing func
 def test_panel(panel):
     class TestFrame(wx.Frame):
         def __init__(self):

@@ -14,6 +14,7 @@ class Builder:
 
     @reiterate_func
     def add_btn(self, name: str, width=160):
+        """reiterate func"""
         key = name
         name = lang.NAMES[name]
         self.btns.setdefault(key, wx.Button(self, label=name, size=(width, -1)))
@@ -33,6 +34,7 @@ class Builder:
 
     @reiterate_func
     def add_static_label(self, name: str, *, name_label=True):
+        """reiterate func"""
         key = name
         name = (lang.NAMES[name] + ':') if name_label else 'None'
         self.static_labels.setdefault(key, wx.StaticText(self, label=name))
@@ -45,6 +47,7 @@ class Builder:
 
     @reiterate_func
     def add_entry_field(self, name: str, *, value=wx.EmptyString, width=200, style=0):
+        """reiterate func"""
         self.entry_fields.setdefault(name, wx.TextCtrl(self, value=value, size=(width, -1), style=style))
 
     def set_value_entry_field(self, name: str, value: str):
@@ -55,10 +58,12 @@ class Builder:
 
     @reiterate_func
     def enable_widget(self, name: str, widget: str):
+        """reiterate func"""
         self.__getattribute__(widget + 's')[name].Enable(True)
 
     @reiterate_func
     def disable_widget(self, name: str, widget: str):
+        """reiterate func"""
         self.__getattribute__(widget + 's')[name].Enable(False)
 
     def add_widgets(self):
