@@ -43,10 +43,10 @@ class BList(BPanel):
         cols = self.list_ctrl.GetColumnCount()
         return tuple(self.list_ctrl.GetItem(row, col).GetText() for col in range(cols))
 
-    def set_row(self, row: int, *items):
-        assert len(items) == self.list_ctrl.GetColumnCount()
-        for col, item in items:
-            self.list_ctrl.SetItem(row, col, item)
+    def set_row(self, row: int, *items, skip_col: tuple | None = None):
+        for col, item in enumerate(items):
+            self.list_ctrl.SetItem(row, col, *item if item is list else item)
+
 
 if __name__ == '__main__':
     ...
