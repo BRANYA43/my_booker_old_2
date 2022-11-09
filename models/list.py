@@ -1,7 +1,7 @@
 from objects.my_object import MyObject
 
 
-class ListCtrlModel:
+class MList:
     def __init__(self):
         self.objects = {}
         self.selected_row = None
@@ -21,6 +21,7 @@ class ListCtrlModel:
     def create_object(self, class_, **attrs_and_value) -> MyObject:
         object_: MyObject = class_()
         self.set_attrs_object(object_, **attrs_and_value)
+        return object_
 
     @staticmethod
     def set_attrs_object(object_, **attrs_and_value):
@@ -35,7 +36,7 @@ class ListCtrlModel:
 
 
 if __name__ == '__main__':
-    list_model = ListCtrlModel()
+    list_model = MList()
 
     object_ = list_model.create_object(MyObject, name='Triangle')
     list_model.add_object(object_)

@@ -5,7 +5,7 @@ import lang.en as lang
 from funcs_support import reiterate_func
 
 
-class Constructor:
+class Builder:
     def __init__(self):
         self.btns = {}
         self.comboboxes = {}

@@ -2,11 +2,11 @@ import wx
 
 import config.config as cfg
 import lang.en as lang
-from constructors.panel_constructor import PanelConstructor
+from builders.panel import BPanel
 from funcs_support import reiterate_func
 
 
-class ListConstructor(PanelConstructor):
+class BList(BPanel):
     def __init__(self, parent, size=wx.DefaultSize, style=wx.TAB_TRAVERSAL):
         super().__init__(parent=parent, size=size, style=style)
         self.columns = {}

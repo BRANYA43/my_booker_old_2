@@ -1,10 +1,10 @@
 import wx
 
-from constructors.list_constructor import ListConstructor
+from builders.list import BList
 from funcs_support import test_panel
 
 
-class ListLaborer(ListConstructor):
+class VList(BList):
     def __init__(self, parent):
         super().__init__(parent=parent)
         self.add_widgets()
@@ -31,4 +31,4 @@ class ListLaborer(ListConstructor):
 
 
 if __name__ == '__main__':
-    test_panel(ListLaborer)
+    test_panel(VList)

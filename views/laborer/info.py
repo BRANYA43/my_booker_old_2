@@ -1,11 +1,11 @@
 import wx
 
 import lang.en as lang
-from constructors.dialog_constructor import DialogConstructor
+from builders.dialog import BDialog
 from funcs_support import test_dialog
 
 
-class InfoLaborer(DialogConstructor):
+class VInfo(BDialog):
     def __init__(self, parent):
         super().__init__(parent=parent, size=(380, 240))
         self.add_widgets()
@@ -38,4 +38,4 @@ class InfoLaborer(DialogConstructor):
 
 
 if __name__ == '__main__':
-    test_dialog(InfoLaborer)
+    test_dialog(VInfo)

@@ -1,13 +1,13 @@
 import wx
 
 import config.config as cfg
-from constructors.constructor import Constructor
+from builders.builder import Builder
 
 
-class FrameConstructor(wx.Frame, Constructor):
-    def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_DIALOG_STYLE):
+class BFrame(wx.Frame, Builder):
+    def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE):
         wx.Frame.__init__(self, parent, title=title, size=size, style=style)
-        Constructor.__init__(self)
+        Builder.__init__(self)
         font = wx.SystemSettings.GetFont(wx.SYS_DEFAULT_GUI_FONT)
         font.SetPointSize(cfg.SIZE_FONT)
         self.SetFont(font)
