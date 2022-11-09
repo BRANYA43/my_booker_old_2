@@ -33,7 +33,7 @@ class CLaborerList:
     def on_save(self, event):
         if self.model.mode_edited:
             laborer = self.model.selected_object
-            self.model.set_attrs_object(Laborer,
+            self.model.set_attrs_object(laborer,
                                         name=self.profile_view.get_value_entry_field('full_name'),
                                         payment=self.profile_view.get_value_combobox('payment'),
                                         rate=self.profile_view.get_value_entry_field('rate'))
@@ -57,16 +57,16 @@ class CLaborerList:
         self.model.mode_edited = False
         self.profile_view.ShowModal()
 
-    @is_selected_object
+    # @is_selected_object
     def on_edit(self, event):
         self.model.mode_edited = True
-        self.profile_view.ShowModal()
         laborer = self.model.selected_object
         self.profile_view.set_value_entry_field('full_name', laborer.name)
         self.profile_view.set_value_combobox('payment', laborer.payment)
         self.profile_view.set_value_entry_field('rate', str(laborer.rate))
+        self.profile_view.ShowModal()
 
-    @is_selected_object
+    # @is_selected_object
     def on_delete(self, event):
         self.model.del_object(self.model.selected_object_id)
         self.list_view.del_row(self.model.selected_row)
