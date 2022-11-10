@@ -52,10 +52,12 @@ class CLaborerList:
     def on_info(self, event):
         laborer = self.model.selected_object
         self.info_view.set_info(laborer.name, laborer.payment, str(laborer.rate))
+        self.info_view.Center()
         self.info_view.ShowModal()
 
     def on_add(self, event):
         self.model.mode_edited = False
+        self.profile_view.Center()
         self.profile_view.ShowModal()
         if self.model.is_one_object_in_objects():
             self.list_view.enable_widget('info', 'edit', 'delete', widget='btn')
@@ -67,6 +69,7 @@ class CLaborerList:
         self.profile_view.set_value_entry_field('full_name', laborer.name)
         self.profile_view.set_value_combobox('payment', laborer.payment)
         self.profile_view.set_value_entry_field('rate', str(laborer.rate))
+        self.profile_view.Center()
         self.profile_view.ShowModal()
 
     @is_selected_object
