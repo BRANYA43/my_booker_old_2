@@ -9,9 +9,9 @@ from funcs_support import is_selected_object
 
 
 class CLaborerList:
-    def __init__(self, model: MList, list_view: VList):
-        self.model = model
-        self.list_view = list_view
+    def __init__(self, parent):
+        self.model = MList()
+        self.list_view = VList(parent)
         self.info_view = VInfo(self.list_view)
         self.profile_view = VProfile(self.list_view)
         self.list_view.disable_widget('info', 'edit', 'delete', widget='btn')
