@@ -13,10 +13,8 @@ class MainFrame(BNotebook):
         self.build_tab_laborer()
 
     def build_tab_laborer(self):
-        model = MList()
-        list_view = VList(self.notebook)
-        controller = CLaborerList(model, list_view)
-        self.add_page(lang.NAMES['laborers'], list_view)
+        controller_laborer = CLaborerList(self.notebook)
+        self.add_page(lang.NAMES['laborers'], controller_laborer.list_view)
 
     def show_frame(self):
         self.Center()
