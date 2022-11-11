@@ -1,4 +1,4 @@
-from views.pattern.list import PVList
+from views.patterns.list import PVList
 from funcs_support import test_panel
 
 

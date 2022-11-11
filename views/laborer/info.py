@@ -27,14 +27,13 @@ class VInfo(BDialog):
         grid_sizer.Add(self.static_labels['payment_'], pos=(1, 1))
         grid_sizer.Add(self.static_labels['rate_'], pos=(2, 1))
         main_sizer.Add(grid_sizer, flag=wx.ALL, border=border)
-        main_sizer.Add(self.btns['ok'], flag= wx.ALIGN_CENTER | wx.TOP, border=20)
+        main_sizer.Add(self.btns['ok'], flag=wx.ALIGN_CENTER | wx.TOP, border=20)
         self.SetSizer(main_sizer)
 
     def set_info(self, full_name: str, payment: str, rate: str):
         self.set_label_static_label('full_name_', full_name)
         self.set_label_static_label('payment_', payment)
         self.set_label_static_label('rate_', rate)
-
 
 
 if __name__ == '__main__':
