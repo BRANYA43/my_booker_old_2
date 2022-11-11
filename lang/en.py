@@ -46,6 +46,7 @@ NAMES = {
     # S
     'save': 'Save',
     'salary': 'Salary',
+    'size': 'Size',
     # T
     # U
     # V
