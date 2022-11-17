@@ -5,7 +5,7 @@ import wx
 from builders.builder import Builder
 
 
-class BFrame(wx.Frame, Builder):
+class FrameBuilder(wx.Frame, Builder):
     def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE):
         wx.Frame.__init__(self, parent, title=title, size=size, style=style)
         Builder.__init__(self, parent)

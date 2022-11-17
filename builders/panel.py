@@ -6,7 +6,7 @@ import config.config as cfg
 from builders.builder import Builder
 
 
-class BPanel(wx.Panel, Builder):
+class PanelBuilder(wx.Panel, Builder):
     def __init__(self, parent, size=wx.DefaultSize, style=wx.TAB_TRAVERSAL):
         wx.Panel.__init__(self, parent, size=size, style=style)
         Builder.__init__(self, parent)

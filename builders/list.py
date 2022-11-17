@@ -2,11 +2,11 @@ from abc import abstractmethod
 
 import wx
 
-from builders.panel import BPanel
+from builders.panel import PanelBuilder
 from support_tools.funcs import reiterate_func_with_one_arg, reiterate_func_with_two_args, reiterate_get_func_with_one_arg
 
 
-class BList(BPanel):
+class ListBuilder(PanelBuilder):
     def __init__(self, parent, size=wx.DefaultSize, style=wx.TAB_TRAVERSAL):
         super().__init__(parent=parent, size=size, style=style)
         self.columns = {}

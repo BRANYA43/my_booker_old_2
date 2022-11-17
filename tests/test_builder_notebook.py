@@ -2,14 +2,14 @@ import unittest
 
 import wx
 
-from builders.notebook import BNotebook
+from builders.notebook import NotebookBuilder
 
 
-class TestBNotebook(unittest.TestCase):
+class TestNotebookBuilder(unittest.TestCase):
     def setUp(self):
-        class TestFrame(BNotebook):
+        class TestFrame(NotebookBuilder):
             def __init__(self):
-                BNotebook.__init__(self, parent=None)
+                NotebookBuilder.__init__(self, parent=None)
 
             def create_widgets(self):
                 pass

@@ -2,15 +2,15 @@ import unittest
 
 import wx
 
-from builders.list import BList
+from builders.list import ListBuilder
 
 
-class TestBList(unittest.TestCase):
+class TestListBuilder(unittest.TestCase):
     def setUp(self):
-        class TestFrame(wx.Frame, BList):
+        class TestFrame(wx.Frame, ListBuilder):
             def __init__(self):
                 wx.Frame.__init__(self, None)
-                BList.__init__(self, parent=self)
+                ListBuilder.__init__(self, parent=self)
 
             def create_widgets(self):
                 pass

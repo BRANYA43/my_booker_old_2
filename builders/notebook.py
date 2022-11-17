@@ -2,10 +2,10 @@ from abc import abstractmethod
 
 import wx
 
-from builders.frame import BFrame
+from builders.frame import FrameBuilder
 
 
-class BNotebook(BFrame):
+class NotebookBuilder(FrameBuilder):
     def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE):
         super().__init__(parent=parent, title=title, size=size, style=style)
         self.pages = {}
