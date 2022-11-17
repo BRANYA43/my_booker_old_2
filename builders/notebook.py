@@ -1,3 +1,5 @@
+from abc import abstractmethod
+
 import wx
 
 from builders.frame import BFrame
@@ -8,6 +10,14 @@ class BNotebook(BFrame):
         super().__init__(parent=parent, title=title, size=size, style=style)
         self.pages = {}
         self.notebook = wx.Notebook(self)
+
+    @abstractmethod
+    def create_widgets(self):
+        pass
+
+    @abstractmethod
+    def build_view(self):
+        pass
 
     def add_page(self, name: str, panel):
         n = len(self.pages)
