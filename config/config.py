@@ -1,6 +1,3 @@
 TITLE = 'MY BOOKER'
-SIZE_FRAME = (800, 600)  # Встановлює розмір вікна
-SIZE_LIST = (200, 300)  # Встановлює розмір BList за замовчуванням
-SIZE_DIALOG = (200, 300)  # Встановлює розмір BDialog за замовчуванням
-LANG = 'en'  # Встановлює мову локалізації
-FONT_SIZE = 14
+LANG = 'en'
+FONT_SIZE = 12
