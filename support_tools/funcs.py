@@ -47,7 +47,7 @@ def reiterate_get_func_with_two_args(func):
 
 def test_panel(panel, *attrs):
     app = wx.App()
-    test_frame_ = TestFrame(panel, attrs)
+    test_frame_ = TestFrame(panel=panel, *attrs)
     test_frame_.show_frame()
     app.MainLoop()
 
@@ -60,9 +60,9 @@ def test_frame(frame):
     app.MainLoop()
 
 
-def test_dialog(dialog, *attr):
+def test_dialog(dialog, *attrs):
     app = wx.App()
-    test_frame_ = TestFrame(dialog, *attr)
+    test_frame_ = TestFrame(dialog=dialog, *attrs)
     test_frame_.show_frame()
     test_frame_.show_dialog()
     app.MainLoop()
