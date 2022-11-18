@@ -20,10 +20,11 @@ class Builder(wx.Window, ABC, metaclass=MBuilder):
         'combobox': wx.ComboBox,
     }
 
-    def __init__(self, parent):
+    def __init__(self, parent, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0):
         ABC.__init__(self)
-        wx.Window.__init__(self, parent)
-        self.font = wx.SystemSettings.GetFont(wx.SYS_DEFAULT_GUI_FONT)
+        wx.Window.__init__(self, parent, pos=pos, size=size, style=style)
+        # self.font = wx.SystemSettings.GetFont(wx.SYS_DEFAULT_GUI_FONT)
+        self.font = wx.Font(14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         self.set_font_size(cfg.FONT_SIZE)
         self.main_sizer = wx.BoxSizer(wx.VERTICAL)
         self.widgets = {}
