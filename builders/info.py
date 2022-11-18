@@ -7,8 +7,8 @@ from support_tools.funcs import reiterate_func_with_one_arg
 
 
 class InfoBuilder(DialogBuilder):
-    def __init__(self, parent):
-        super(InfoBuilder, self).__init__(parent)
+    def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_DIALOG_STYLE):
+        super(InfoBuilder, self).__init__(parent, title=title, size=size, style=style)
         self.labels = []
 
     @abstractmethod
