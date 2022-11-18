@@ -1,6 +1,6 @@
 import wx
 
-import config.config as cfg
+from views.test_frame import TestFrame
 
 
 def reiterate_func_with_one_arg(func):
@@ -45,58 +45,24 @@ def reiterate_get_func_with_two_args(func):
     return wrapper
 
 
-
-
-
-# # Decorate for use class
-# def reiterate_func(func):
-#     def wrapper(self, *args, **kwargs):
-#         for arg in args:
-#             func(self, arg, **kwargs)
-#     return wrapper
-#
-#
-# def is_selected_object(func):
-#     def wrapper(self, *args, **kwargs):
-#         if self.model.selected_object is not None:
-#             func(self, *args, **kwargs)
-#     return wrapper
-
-
-# testing func
-def test_panel(panel):
-    class TestFrame(wx.Frame):
-        def __init__(self):
-            super(TestFrame, self).__init__(parent=None, title='TEST-FRAME', size=cfg.SIZE_FRAME)
-            self.panel = panel(self)
-
-        def show(self):
-            self.Center()
-            self.Show()
-
+def test_panel(panel, *attrs):
     app = wx.App()
-    test_frame = TestFrame()
-    test_frame.show()
+    test_frame_ = TestFrame(panel, attrs)
+    test_frame_.show_frame()
     app.MainLoop()
 
 
 def test_frame(frame):
     app = wx.App()
-    test_frame = frame(parent=None)
-    test_frame.Center()
-    test_frame.Show()
-    app.Mainloop()
+    test_frame_ = frame(parent=None)
+    test_frame_.Center()
+    test_frame_.Show()
+    app.MainLoop()
 
 
-def test_dialog(dialog):
+def test_dialog(dialog, *attr):
     app = wx.App()
-
-    class TestFrame(wx.Frame):
-        def __init__(self):
-            super(TestFrame, self).__init__(parent=None, title='TEST-FRAME', size=cfg.SIZE_FRAME)
-            self.dialog = dialog(self)
-            self.dialog.ShowModal()
-    test_frame = TestFrame()
-    test_frame.Center()
-    test_frame.Show()
+    test_frame_ = TestFrame(dialog, *attr)
+    test_frame_.show_frame()
+    test_frame_.show_dialog()
     app.MainLoop()
