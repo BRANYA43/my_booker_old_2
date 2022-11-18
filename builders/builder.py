@@ -23,7 +23,7 @@ class Builder(wx.Window, ABC, metaclass=MBuilder):
     def __init__(self, parent):
         ABC.__init__(self)
         wx.Window.__init__(self, parent)
-        self.font = wx.SystemSettings.GetFont(wx.SYS_DEVICE_DEFAULT_FONT)
+        self.font = wx.SystemSettings.GetFont(wx.SYS_DEFAULT_GUI_FONT)
         self.set_font_size(cfg.FONT_SIZE)
         self.main_sizer = wx.BoxSizer(wx.VERTICAL)
         self.widgets = {}
