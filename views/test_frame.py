@@ -1,16 +1,10 @@
-from builders.frame import FrameBuilder
+import wx
 
 
-class TestFrame(FrameBuilder):
+class TestFrame(wx.Frame):
     def __init__(self, window, *attr):
         super().__init__(parent=None, title='TEST-FRAME', size=(800, 600))
         self.window = window(self, *attr)
-
-    def create_widgets(self):
-        pass
-
-    def build_view(self):
-        pass
 
     def show_frame(self):
         self.Center()
