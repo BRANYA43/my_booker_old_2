@@ -7,7 +7,7 @@ from builders.info import InfoBuilder
 from support_tools.funcs import test_dialog
 
 
-class InfoPattern(InfoBuilder):
+class InfoViewPattern(InfoBuilder):
     def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_DIALOG_STYLE):
         super().__init__(parent, title=title, size=size, style=style)
 
@@ -21,7 +21,7 @@ class InfoPattern(InfoBuilder):
 
 
 if __name__ == '__main__':
-    class InfoView(InfoPattern):
+    class InfoView(InfoViewPattern):
         def __init__(self, parent):
             super().__init__(parent)
             self.create_widgets()

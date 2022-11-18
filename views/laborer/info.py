@@ -1,11 +1,11 @@
 import wx
 
 import lang.en as lang
-from views.patterns.info import InfoPattern
+from views.patterns.info import InfoViewPattern
 from support_tools.funcs import test_dialog
 
 
-class InfoView(InfoPattern):
+class InfoView(InfoViewPattern):
     def __init__(self, parent):
         super().__init__(parent=parent, title=lang.LABORER, size=(400, 230))
         print(self.GetSize())
