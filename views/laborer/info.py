@@ -1,41 +1,34 @@
 import wx
 
 import lang.en as lang
-from builders.dialog import BDialog
-from funcs_support import test_dialog
+from views.patterns.info import InfoPattern
+from support_tools.funcs import test_dialog
 
 
-class VInfo(BDialog):
+class InfoView(InfoPattern):
     def __init__(self, parent):
-        super().__init__(parent=parent, size=(380, 240))
-        self.add_widgets()
+        super().__init__(parent=parent, title=lang.LABORER, size=(400, 230))
+        print(self.GetSize())
+        self.create_widgets()
         self.build_view()
 
-    def add_widgets(self):
-        self.add_static_label('full_name', 'payment', 'rate')
-        self.add_static_label('full_name_', 'payment_', 'rate_', name_label=False)
-        self.add_btn('ok')
+    def create_widgets(self):
+        self.create_static_text(lang.FULL_NAME, lang.PAYMENT, lang.RATE, auto_name_label=True, colon=True)
+        self.create_static_text('full_name_', 'payment_', 'rate_', add=True)
+        super().create_widgets()
 
     def build_view(self):
         border = 10
-        main_sizer = wx.BoxSizer(wx.VERTICAL)
         grid_sizer = wx.GridBagSizer(10, 10)
-        grid_sizer.Add(self.static_labels['full_name'], pos=(0, 0), flag=wx.ALIGN_RIGHT)
-        grid_sizer.Add(self.static_labels['payment'], pos=(1, 0), flag=wx.ALIGN_RIGHT)
-        grid_sizer.Add(self.static_labels['rate'], pos=(2, 0), flag=wx.ALIGN_RIGHT)
-        grid_sizer.Add(self.static_labels['full_name_'], pos=(0, 1))
-        grid_sizer.Add(self.static_labels['payment_'], pos=(1, 1))
-        grid_sizer.Add(self.static_labels['rate_'], pos=(2, 1))
-        main_sizer.Add(grid_sizer, flag=wx.ALL, border=border)
-        main_sizer.Add(self.btns['ok'], flag= wx.ALIGN_CENTER | wx.TOP, border=20)
-        self.SetSizer(main_sizer)
-
-    def set_info(self, full_name: str, payment: str, rate: str):
-        self.set_label_static_label('full_name_', full_name)
-        self.set_label_static_label('payment_', payment)
-        self.set_label_static_label('rate_', rate)
-
+        grid_sizer.Add(self.get_static_text(lang.FULL_NAME), pos=(0, 0), flag=wx.ALIGN_RIGHT)
+        grid_sizer.Add(self.get_static_text(lang.PAYMENT), pos=(1, 0), flag=wx.ALIGN_RIGHT)
+        grid_sizer.Add(self.get_static_text(lang.RATE), pos=(2, 0), flag=wx.ALIGN_RIGHT)
+        grid_sizer.Add(self.get_static_text('full_name_'), pos=(0, 1))
+        grid_sizer.Add(self.get_static_text('payment_'), pos=(1, 1))
+        grid_sizer.Add(self.get_static_text('rate_'), pos=(2, 1))
+        self.main_sizer.Add(grid_sizer, flag=wx.ALL, border=border)
+        super().build_view()
 
 
 if __name__ == '__main__':
-    test_dialog(VInfo)
+    test_dialog(InfoView)

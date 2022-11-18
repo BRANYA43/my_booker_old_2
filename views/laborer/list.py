@@ -1,34 +1,30 @@
 import wx
 
-from builders.list import BList
-from funcs_support import test_panel
+from builders.list import ListBuilder
+from support_tools.funcs import test_panel
 
 
-class VList(BList):
+class ListView(ListBuilder):
     def __init__(self, parent):
         super().__init__(parent=parent)
-        self.add_widgets()
+        self.create_widgets()
         self.build_view()
 
-    def add_widgets(self):
+    def create_widgets(self):
         self.set_size_list(240, 330)
         self.add_column('laborer', 'id')
-        self.set_width_column('laborer', width=240)
+        self.set_width_column('laborer', 240)
         self.hide_column('id')
-        self.add_btn('info', 'add', 'edit', 'delete')
+        self.create_btn('info', 'add', 'edit', 'delete', auto_name_label=True)
 
     def build_view(self):
         border = 10
-        main_sizer = wx.BoxSizer(wx.VERTICAL)
-        main_sizer.Add(self.list_ctrl, flag=wx.ALIGN_CENTRE | wx.TOP, border=border)
+        self.main_sizer.Add(self.list_ctrl, flag=wx.ALIGN_CENTRE | wx.TOP, border=border)
         btn_sizer = wx.BoxSizer(wx.VERTICAL)
-        btn_sizer.Add(self.btns['info'], flag=wx.TOP | wx.BOTTOM, border=border)
-        btn_sizer.Add(self.btns['add'], flag=wx.BOTTOM, border=border)
-        btn_sizer.Add(self.btns['edit'], flag=wx.BOTTOM, border=border)
-        btn_sizer.Add(self.btns['delete'])
-        main_sizer.Add(btn_sizer, flag=wx.ALIGN_CENTER, border=border)
-        self.SetSizer(main_sizer)
+        for btn in self.get_btn('info', 'add', 'edit', 'delete'):
+            btn_sizer.Add(btn, flag=wx.BOTTOM, border=border)
+        self.main_sizer.Add(btn_sizer, flag=wx.ALIGN_CENTER | wx.TOP, border=border)
 
 
 if __name__ == '__main__':
-    test_panel(VList)
+    test_panel(ListView)
