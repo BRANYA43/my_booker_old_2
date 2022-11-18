@@ -2,7 +2,7 @@ import wx
 
 import lang.en as lang
 from builders.notebook import NotebookBuilder
-from views.laborer.list import VList
+from views.laborer.list import ListView
 from models.list import MList
 from controllers.list_laborer import CLaborerList
 
@@ -20,7 +20,7 @@ class MainFrame(NotebookBuilder):
 
     def build_tab_laborer(self):
         model = MList()
-        list_view = VList(self.notebook)
+        list_view = ListView(self.notebook)
         controller = CLaborerList(model, list_view)
         self.add_page(lang.NAMES['laborers'], list_view)
 
