@@ -13,7 +13,7 @@ class TestBuilder(unittest.TestCase):
         class TestFrame(wx.Frame, Builder, metaclass=MetaFrame):
             def __init__(self):
                 wx.Frame.__init__(self, None)
-                Builder.__init__(self, parent=self)
+                Builder.__init__(self)
 
             def create_widgets(self):
                 pass

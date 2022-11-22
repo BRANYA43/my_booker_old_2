@@ -148,6 +148,5 @@ class TestListBuilder(unittest.TestCase):
         self.assertIsNone(row_data)
 
 
-
 if __name__ == '__main__':
     unittest.main()

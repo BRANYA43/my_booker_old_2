@@ -62,7 +62,5 @@ class TestListModel(unittest.TestCase):
         self.assertFalse(self.model.is_one_object_in_objects())
 
 
-
-
 if __name__ == '__main__':
     unittest.main()

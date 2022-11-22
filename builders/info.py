@@ -21,8 +21,10 @@ class InfoBuilder(DialogBuilder):
         pass
 
     @reiterate_func_with_one_arg
-    def create_static_text(self, name: str, *, add=False, auto_name_label=False, colon=False, label='Not named', pos=wx.DefaultPosition, width=-1, height=-1, style=0):
-        super().create_static_text(name, auto_name_label=auto_name_label, colon=colon, label=label, pos=pos, width=width, height=height, style=style)
+    def create_static_text(self, name: str, *, add=False, auto_name_label=False, colon=False, label='Not named', pos=wx.DefaultPosition, width=-1,
+                           height=-1, style=0):
+        super().create_static_text(name, auto_name_label=auto_name_label, colon=colon, label=label, pos=pos, width=width, height=height,
+                                   style=style)
         if add:
             self.labels.append(name)
 

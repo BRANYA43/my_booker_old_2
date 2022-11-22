@@ -78,7 +78,8 @@ class Builder(ABC):
                            size=(width, height), style=style)
 
     @reiterate_func_with_one_arg
-    def create_static_text(self, name: str, *, auto_name_label=False, colon=False, label=NOT_NAMED, pos=wx.DefaultPosition, width=-1, height=-1, style=0):
+    def create_static_text(self, name: str, *, auto_name_label=False, colon=False, label=NOT_NAMED, pos=wx.DefaultPosition, width=-1, height=-1,
+                           style=0):
         if auto_name_label and label != self.NOT_NAMED:
             raise Exception
         if colon:
