@@ -8,7 +8,6 @@ from support_tools.funcs import test_dialog
 class InfoView(InfoViewPattern):
     def __init__(self, parent):
         super().__init__(parent=parent, title=lang.LABORER, size=(400, 230))
-        print(self.GetSize())
         self.create_widgets()
         self.build_view()
 

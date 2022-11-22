@@ -1,5 +1,6 @@
 import wx
 
+import lang.en as lang
 from builders.list import ListBuilder
 from support_tools.funcs import test_panel
 
@@ -12,16 +13,16 @@ class ListView(ListBuilder):
 
     def create_widgets(self):
         self.set_size_list(240, 330)
-        self.add_column('laborer', 'id')
-        self.set_width_column('laborer', 240)
+        self.add_column(lang.LABORERS, 'id')
+        self.set_width_column(lang.LABORERS, 240)
         self.hide_column('id')
-        self.create_btn('info', 'add', 'edit', 'delete', auto_name_label=True)
+        self.create_btn(lang.INFO, lang.ADD, lang.EDIT, lang.DELETE, auto_name_label=True)
 
     def build_view(self):
         border = 10
         self.main_sizer.Add(self.list_ctrl, flag=wx.ALIGN_CENTRE | wx.TOP, border=border)
         btn_sizer = wx.BoxSizer(wx.VERTICAL)
-        for btn in self.get_btn('info', 'add', 'edit', 'delete'):
+        for btn in self.get_btn(lang.INFO, lang.ADD, lang.EDIT, lang.DELETE):
             btn_sizer.Add(btn, flag=wx.BOTTOM, border=border)
         self.main_sizer.Add(btn_sizer, flag=wx.ALIGN_CENTER | wx.TOP, border=border)
 

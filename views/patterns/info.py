@@ -8,8 +8,9 @@ from support_tools.funcs import test_dialog
 
 
 class InfoViewPattern(InfoBuilder):
-    def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_DIALOG_STYLE):
-        super().__init__(parent, title=title, size=size, style=style)
+    def __init__(self, parent, id_=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.DEFAULT_DIALOG_STYLE,
+                 name=wx.DialogNameStr):
+        super().__init__(parent, id_, title, pos, size, style, name)
 
     @abstractmethod
     def create_widgets(self):
