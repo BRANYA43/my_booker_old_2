@@ -7,7 +7,10 @@ from builders.builder import Builder
 
 class TestBuilder(unittest.TestCase):
     def setUp(self):
-        class TestFrame(wx.Frame, Builder):
+        class MetaFrame(type(wx.Frame), type(Builder)):
+            pass
+
+        class TestFrame(wx.Frame, Builder, metaclass=MetaFrame):
             def __init__(self):
                 wx.Frame.__init__(self, None)
                 Builder.__init__(self, parent=self)
@@ -323,6 +326,24 @@ class TestBuilder(unittest.TestCase):
         self.assertEqual(type(comboboxes), tuple)
         for combobox_ in comboboxes:
             self.assertEqual(type(combobox_), wx.ComboBox)
+
+    def test_get_value(self):
+        self.builder.create_text_ctrl('name', value='value')
+        self.assertEqual('value', self.builder.get_value('text_ctrl', 'name'))
+
+    def test_set_value(self):
+        self.builder.create_text_ctrl('name', value='value')
+        self.builder.set_value('text_ctrl', 'name', 'BOB')
+        self.assertEqual('BOB', self.builder.get_value('text_ctrl', 'name'))
+
+    def test_get_label(self):
+        self.builder.create_static_text('name', label='label')
+        self.assertEqual('label', self.builder.get_label('static_text', 'name'))
+
+    def test_set_label(self):
+        self.builder.create_static_text('name', label='label')
+        self.builder.set_label('static_text', 'name', 'button')
+        self.assertEqual('button', self.builder.get_label('static_text', 'name'))
 
 
 if __name__ == '__main__':
