@@ -6,10 +6,12 @@ from builders.frame import FrameBuilder
 
 
 class NotebookBuilder(FrameBuilder):
-    def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE):
-        super().__init__(parent=parent, title=title, size=size, style=style)
+    def __init__(self, parent, id_=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE,
+                 name=wx.FrameNameStr):
+        super().__init__(parent, id_, title, pos, size, style, name)
         self.pages = {}
         self.notebook = wx.Notebook(self)
+        self.main_sizer.Add(self.notebook, proportion=1, flag=wx.EXPAND)
 
     @abstractmethod
     def create_widgets(self):

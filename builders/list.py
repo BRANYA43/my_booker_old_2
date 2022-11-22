@@ -3,12 +3,12 @@ from abc import abstractmethod
 import wx
 
 from builders.panel import PanelBuilder
-from support_tools.funcs import reiterate_func_with_one_arg, reiterate_func_with_two_args, reiterate_get_func_with_one_arg
+from support_tools.decorators import reiterate_func_with_one_arg, reiterate_func_with_two_args, reiterate_get_func_with_one_arg
 
 
 class ListBuilder(PanelBuilder):
-    def __init__(self, parent, size=wx.DefaultSize, style=wx.TAB_TRAVERSAL):
-        super().__init__(parent=parent, size=size, style=style)
+    def __init__(self, parent, id_=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.TAB_TRAVERSAL, name=wx.PanelNameStr):
+        super().__init__(parent, id_, pos, size, style, name)
         self.columns = {}
         self.list_ctrl = wx.ListCtrl(self, style=wx.LC_REPORT)
 
@@ -61,12 +61,11 @@ class ListBuilder(PanelBuilder):
         cols = [num for num in self.columns.values() if num not in skip_col]
         assert len(cols) == len(items)
         for col, item in zip(cols, items):
-            self.list_ctrl.SetItem(row, col, item[0] if type(item) is list else item)
+            self.list_ctrl.SetItem(row, col, str(item))
 
     @reiterate_func_with_one_arg
     def del_row(self, row: int):
         self.list_ctrl.DeleteItem(row)
-
 
 
 if __name__ == '__main__':

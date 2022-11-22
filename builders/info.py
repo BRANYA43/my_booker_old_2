@@ -3,12 +3,13 @@ from abc import abstractmethod
 import wx
 
 from builders.dialog import DialogBuilder
-from support_tools.funcs import reiterate_func_with_one_arg
+from support_tools.decorators import reiterate_func_with_one_arg
 
 
 class InfoBuilder(DialogBuilder):
-    def __init__(self, parent, title=wx.EmptyString, size=wx.DefaultSize, style=wx.DEFAULT_DIALOG_STYLE):
-        super().__init__(parent, title=title, size=size, style=style)
+    def __init__(self, parent, id_=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.DEFAULT_DIALOG_STYLE,
+                 name=wx.DialogNameStr):
+        super().__init__(parent, id_, title, pos, size, style, name)
         self.labels = []
 
     @abstractmethod
@@ -27,7 +28,7 @@ class InfoBuilder(DialogBuilder):
 
     def set_labels(self, *values: str):
         for label, value in zip(self.labels, values):
-            self.get_static_text(label).SetLabel(value)
+            self.set_label('static_text', label, str(value))
 
 
 if __name__ == '__main__':
