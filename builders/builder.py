@@ -3,15 +3,11 @@ from abc import ABC, abstractmethod
 import wx
 
 import config.config as cfg
-from support_tools.funcs import reiterate_func_with_one_arg, reiterate_func_with_two_args, reiterate_get_func_with_two_args, \
-    reiterate_get_func_with_one_arg
+from support_tools.decorators import reiterate_func_with_one_arg, reiterate_func_with_two_args, reiterate_get_func_with_two_args, \
+    reiterate_get_func_with_one_arg, reiterate_func_with_three_args
 
 
-class MBuilder(type(wx.Window), type(ABC)):
-    pass
-
-
-class Builder(wx.Window, ABC, metaclass=MBuilder):
+class Builder(ABC):
     NOT_NAMED = 'Not named'
     widget_classes = {
         'btn': wx.Button,
@@ -20,10 +16,8 @@ class Builder(wx.Window, ABC, metaclass=MBuilder):
         'combobox': wx.ComboBox,
     }
 
-    def __init__(self, parent, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0):
+    def __init__(self):
         ABC.__init__(self)
-        wx.Window.__init__(self, parent, pos=pos, size=size, style=style)
-        # self.font = wx.SystemSettings.GetFont(wx.SYS_DEFAULT_GUI_FONT)
         self.font = wx.Font(14, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         self.set_font_size(cfg.FONT_SIZE)
         self.main_sizer = wx.BoxSizer(wx.VERTICAL)

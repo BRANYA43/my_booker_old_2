@@ -6,10 +6,14 @@ import config.config as cfg
 from builders.builder import Builder
 
 
-class PanelBuilder(wx.Panel, Builder):
-    def __init__(self, parent, size=wx.DefaultSize, style=wx.TAB_TRAVERSAL):
-        wx.Panel.__init__(self, parent)
-        Builder.__init__(self, parent, size=size, style=style)
+class MetaPanelBuilder(type(wx.Panel), type(Builder)):
+    pass
+
+
+class PanelBuilder(wx.Panel, Builder, metaclass=MetaPanelBuilder):
+    def __init__(self, parent, id_=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.TAB_TRAVERSAL, name=wx.PanelNameStr):
+        wx.Panel.__init__(self, parent, id_, pos, size, style, name)
+        Builder.__init__(self)
 
     @abstractmethod
     def create_widgets(self):
