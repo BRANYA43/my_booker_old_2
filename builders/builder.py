@@ -116,6 +116,22 @@ class Builder(ABC):
     def get_combobox(self, name: str) -> wx.ComboBox | tuple[wx.ComboBox]:
         return self.get_widget('combobox', name)
 
+    @reiterate_get_func_with_two_args
+    def get_value(self, type_: str, name: str) -> str:
+        return self.get_widget(type_, name).GetValue()
+
+    @reiterate_func_with_three_args
+    def set_value(self, type_: str, name: str, value: str):
+        self.get_widget(type_, name).SetValue(str(value))
+
+    @reiterate_get_func_with_two_args
+    def get_label(self, type_: str, name: str) -> str:
+        return self.get_widget(type_, name).GetLabel()
+
+    @reiterate_func_with_three_args
+    def set_label(self, type_: str, name: str, label: str):
+        self.get_widget(type_, name).SetLabel(label)
+
 
 if __name__ == '__main__':
     ...
